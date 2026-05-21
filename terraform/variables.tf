@@ -13,5 +13,5 @@ variable "location" {
 variable "unique_suffix" {
   type        = string
   description = "A short unique string to ensure globally unique names for Storage and CosmosDB (e.g., 'abc123')"
-  default     = "projazh2026" #  your own random letters/numbers
+  default     = "azt2026" #  your own random letters/numbers
 }

@@ -1,13 +1,13 @@
 # 1. Monitoring (Log Analytics & Application Insights)
 resource "azurerm_log_analytics_workspace" "law" {
-  name                = "logazurwork1-${var.unique_suffix}"
+  name                = "logaw-${var.unique_suffix}"
   location            = var.location
   resource_group_name = var.resource_group_name
   sku                 = "PerGB2018"
 }
 
 resource "azurerm_application_insights" "appinsights" {
-  name                = "appi-app-${var.unique_suffix}"
+  name                = "appins${var.unique_suffix}"
   location            = var.location
   resource_group_name = var.resource_group_name
   workspace_id        = azurerm_log_analytics_workspace.law.id
@@ -17,7 +17,7 @@ resource "azurerm_application_insights" "appinsights" {
 # 2. Database (Cosmos DB)
 # Note: Cosmos DB names must be globally unique!
 resource "azurerm_cosmosdb_account" "db" {
-  name                = "cosmoterra-${var.unique_suffix}"
+  name                = "cosmodata-${var.unique_suffix}"
   location            = var.location
   resource_group_name = var.resource_group_name
   offer_type          = "Standard"
@@ -43,7 +43,7 @@ resource "azurerm_cosmosdb_sql_database" "sqldb" {
 # 3. Compute (Azure Function App & required Storage)
 # Note: Storage account names must be globally unique and lowercase!
 resource "azurerm_storage_account" "fnstorage" {
-  name                     = "stfun${var.unique_suffix}"
+  name                     = "stac${var.unique_suffix}"
   resource_group_name      = var.resource_group_name
   location                 = var.location
   account_tier             = "Standard"
