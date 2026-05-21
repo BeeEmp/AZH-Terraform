@@ -35,6 +35,8 @@ AZ104-Terraform/
 │           └── variables.tf
 └── README.md
 
+```
+
 🚀 Prerequisites
 
 Before you begin, ensure you have the following installed and configured:
