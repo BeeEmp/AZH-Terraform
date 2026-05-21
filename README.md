@@ -1,8 +1,8 @@
 Markdown
 
-# Azure Serverless Portfolio Infrastructure
+# Azure Serverless Infrastructure
 
-This repository contains the Infrastructure as Code (IaC) to deploy a fully serverless, highly scalable web application and database backend on Microsoft Azure using Terraform. 
+This repository contains the Infrastructure as Code (IaC) to deploy a fully serverless, scalable web application and database backend on Microsoft Azure using Terraform. 
 
 ## 🏗️ Architecture Overview
 
@@ -48,30 +48,35 @@ Before you begin, ensure you have the following installed and configured:
 🛠️ Deployment Instructions
 
 1. Authenticate with Azure
-Bash
 
+```bash
 az login
+terraform init
+```
 
 (Note: If you are using a university/tenant-specific account, you may need to append --tenant <YOUR_TENANT_ID> to the login command).
 
 2. Initialize Terraform
 Navigate to the terraform directory and download the required provider plugins:
-Bash
 
-cd terraform
+```bash
 terraform init
+```
 
 3. Preview the Infrastructure
 Generate an execution plan to verify what resources will be created:
-Bash
 
+```bash
 terraform plan
+```
 
 4. Deploy
 Apply the configuration to provision the resources in Azure. Type yes when prompted.
-Bash
 
+```bash
 terraform apply
+```
+
 
 5. Access Your Application
 Once the deployment finishes, Terraform will output the primary endpoint for your frontend website and the Cosmos DB endpoint. Click the frontend URL to view the live site.
@@ -88,4 +93,6 @@ Once the deployment finishes, Terraform will output the primary endpoint for you
 To avoid ongoing charges, destroy all resources when you are done:
 Bash
 
+```bash
 terraform destroy
+```
