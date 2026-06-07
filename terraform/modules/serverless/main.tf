@@ -30,6 +30,7 @@ resource "azurerm_cosmosdb_account" "db" {
   geo_location {
     location          = var.location
     failover_priority = 0
+    zone_redundant    = false
   }
 }
 
@@ -43,7 +44,7 @@ resource "azurerm_cosmosdb_sql_database" "sqldb" {
 # 3. Compute (Azure Function App & required Storage)
 # Note: Storage account names must be globally unique and lowercase!
 resource "azurerm_storage_account" "fnstorage" {
-  name                     = "stac${var.unique_suffix}"
+  name                     = "terfunc${var.unique_suffix}"
   resource_group_name      = var.resource_group_name
   location                 = var.location
   account_tier             = "Standard"
@@ -55,7 +56,7 @@ resource "azurerm_service_plan" "asp" {
   resource_group_name = var.resource_group_name
   location            = var.location
   os_type             = "Linux"
-  sku_name            = "Y1" # Dynamic consumption plan (cheapest/serverless tier)
+  sku_name            = "Y1" # consumption plan (cheapest/serverless tier)
 }
 
 resource "azurerm_linux_function_app" "function" {
